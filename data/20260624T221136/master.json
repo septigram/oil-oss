@@ -1,0 +1,207 @@
+{
+  "company": {
+    "company_id": "COMP-001",
+    "company_name": "株式会社ストッククラウド",
+    "industry": "在庫管理SaaS"
+  },
+  "departments": [
+    {
+      "department_id": "DEPT-OPS",
+      "department_name": "運用部",
+      "parent_department_id": null,
+      "valid_from": "2020-04-01",
+      "valid_to": null
+    },
+    {
+      "department_id": "DEPT-DEV",
+      "department_name": "開発部",
+      "parent_department_id": null,
+      "valid_from": "2020-04-01",
+      "valid_to": null
+    },
+    {
+      "department_id": "DEPT-SAL",
+      "department_name": "営業部",
+      "parent_department_id": null,
+      "valid_from": "2020-04-01",
+      "valid_to": null
+    }
+  ],
+  "department_history": [],
+  "personnel_history": [
+    {
+      "history_id": "PHIS-00001",
+      "employee_id": "EMP-00001",
+      "employee_name": "運用 一郎",
+      "department_id": "DEPT-OPS",
+      "role_title": "オペレータ",
+      "change_type": "JOIN",
+      "effective_at": "2020-04-01"
+    },
+    {
+      "history_id": "PHIS-00002",
+      "employee_id": "EMP-00002",
+      "employee_name": "営業 花子",
+      "department_id": "DEPT-SAL",
+      "role_title": "営業",
+      "change_type": "JOIN",
+      "effective_at": "2020-04-01"
+    }
+  ],
+  "services": [
+    {
+      "service_id": "SVC-001",
+      "service_name": "Mercury",
+      "description": "AWS上の初代在庫管理SaaS",
+      "launch_at": "2020-04-01T09:00:00+09:00",
+      "owner_department_id": "DEPT-DEV",
+      "status": "ACTIVE",
+      "cloud_platform": "AWS",
+      "incident_rate_multiplier": 1.0,
+      "frequency_phases": [
+        {
+          "phase_type": "LAUNCH_BURST",
+          "duration_days": 30,
+          "rate_per_day": 10.0,
+          "rate_per_week": null
+        },
+        {
+          "phase_type": "STEADY",
+          "duration_days": null,
+          "rate_per_day": null,
+          "rate_per_week": 1.0
+        }
+      ]
+    },
+    {
+      "service_id": "SVC-002",
+      "service_name": "Venus",
+      "description": "Azure上の後継サービス",
+      "launch_at": "2024-08-01T09:00:00+09:00",
+      "owner_department_id": "DEPT-DEV",
+      "status": "ACTIVE",
+      "cloud_platform": "Azure",
+      "incident_rate_multiplier": 0.5,
+      "frequency_phases": [
+        {
+          "phase_type": "LAUNCH_BURST",
+          "duration_days": 30,
+          "rate_per_day": 10.0,
+          "rate_per_week": null
+        },
+        {
+          "phase_type": "STEADY",
+          "duration_days": null,
+          "rate_per_day": null,
+          "rate_per_week": 1.0
+        }
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "customer_id": "CUST-0001",
+      "customer_name": "架空食品店A",
+      "industry_segment": "FOOD_RETAIL",
+      "service_id": "SVC-001",
+      "contract_start_at": "2020-05-01"
+    },
+    {
+      "customer_id": "CUST-0002",
+      "customer_name": "架空食品店B",
+      "industry_segment": "FOOD_RETAIL",
+      "service_id": "SVC-001",
+      "contract_start_at": "2020-06-01"
+    },
+    {
+      "customer_id": "CUST-0010",
+      "customer_name": "架空服飾店A",
+      "industry_segment": "APPAREL_RETAIL",
+      "service_id": "SVC-002",
+      "contract_start_at": "2024-09-01"
+    }
+  ],
+  "external_events": [],
+  "incident_types": [
+    {
+      "type_id": "ITYP-001",
+      "type_name": "マスター設定ミスによる在庫登録失敗",
+      "frequency_weight": 1.0,
+      "avg_detection_minutes": 30,
+      "severity_default": "MEDIUM",
+      "detection_source": "OPS_MONITORING",
+      "description": "在庫登録失敗"
+    },
+    {
+      "type_id": "ITYP-002",
+      "type_name": "棚卸突合失敗",
+      "frequency_weight": 0.8,
+      "avg_detection_minutes": 120,
+      "severity_default": "LOW",
+      "detection_source": "SALES_INQUIRY",
+      "description": "棚卸突合失敗"
+    },
+    {
+      "type_id": "ITYP-003",
+      "type_name": "運用者の作業ミスによるアクセス障害",
+      "frequency_weight": 0.6,
+      "avg_detection_minutes": 15,
+      "severity_default": "HIGH",
+      "detection_source": "OPS_MONITORING",
+      "description": "アクセス障害"
+    },
+    {
+      "type_id": "ITYP-004",
+      "type_name": "顧客側ネットワーク障害",
+      "frequency_weight": 0.8,
+      "avg_detection_minutes": 60,
+      "severity_default": "LOW",
+      "detection_source": "SALES_INQUIRY",
+      "description": "顧客NW障害"
+    },
+    {
+      "type_id": "ITYP-005",
+      "type_name": "ストレージ溢れ",
+      "frequency_weight": 0.5,
+      "avg_detection_minutes": 45,
+      "severity_default": "HIGH",
+      "detection_source": "OPS_MONITORING",
+      "description": "ストレージ溢れ"
+    },
+    {
+      "type_id": "ITYP-006",
+      "type_name": "利用者増による応答遅延",
+      "frequency_weight": 0.7,
+      "avg_detection_minutes": 30,
+      "severity_default": "MEDIUM",
+      "detection_source": "OPS_MONITORING",
+      "description": "応答遅延"
+    }
+  ],
+  "incident_type_locations": [
+    {
+      "type_id": "ITYP-001",
+      "location_name": "Mercury AWS AP"
+    },
+    {
+      "type_id": "ITYP-002",
+      "location_name": "顧客店舗POS"
+    },
+    {
+      "type_id": "ITYP-003",
+      "location_name": "運用コンソール"
+    },
+    {
+      "type_id": "ITYP-004",
+      "location_name": "顧客拠点NW"
+    },
+    {
+      "type_id": "ITYP-005",
+      "location_name": "Mercury AWS Storage"
+    },
+    {
+      "type_id": "ITYP-006",
+      "location_name": "Venus Azure AP"
+    }
+  ]
+}

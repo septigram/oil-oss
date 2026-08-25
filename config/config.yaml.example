@@ -1,0 +1,40 @@
+app:
+  timezone: Asia/Tokyo
+  context_path: /oil
+  base_url: http://localhost:8000/oil
+  operator:
+    employee_id: EMP-00001
+    display_name: 運用 一郎
+
+auth:
+  enabled: false
+  session_ttl_hours: 8
+  cookie_name: oil_session
+  secure_cookie: false
+
+reference_date:
+  mode: system
+  fixed_date: "2020-05-31"
+
+tsurugi:
+  endpoint: tcp://127.0.0.1:12345
+  user: tsurugi
+  password: password
+
+paths:
+  corpus_jsonl: data/20260624T221136/corpus.jsonl
+  rag_summary_dir: data/rag-summary
+  faiss_dir: data/faiss
+  chat_prompt_templates: data/chat-prompt-templates.yaml
+
+rag:
+  top_k: 5
+
+ai:
+  provider: ollama
+  llm_provider: ollama
+  llm_model: gpt-4o-mini
+  embedding_model: text-embedding-3-small
+  ollama_base_url: http://localhost:11434
+  ollama_llm_model: qwen3.6:27b
+  ollama_embedding_model: nomic-embed-text

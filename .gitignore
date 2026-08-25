@@ -1,0 +1,32 @@
+.env
+config/config.yaml
+
+# Python 仮想環境
+wenv/
+.venv/
+venv/
+lvenv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node / フロントエンド
+node_modules/
+frontend/dist/
+
+# エディタ・OS
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

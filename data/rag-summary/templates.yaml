@@ -1,0 +1,32 @@
+# 集計サマリテンプレート定義
+# インデックス生成ツールが本ファイルと sql/ 配下の SQL を読み込み、
+# 基準日から相対期間を算出して {count} を埋めたサマリ文書を RAG へ投入する。
+
+version: 1
+timezone: Asia/Tokyo
+week_starts_on: monday
+
+templates:
+  - template_id: SUM-LAST-WEEK-ALL
+    doc_id: DOC-SUM-LAST-WEEK-ALL
+    text_template: "先週発生したインシデント件数は{count}件"
+    period: last_week
+    sql_file: sql/last_week_all.sql
+
+  - template_id: SUM-TWO-WEEKS-AGO-ALL
+    doc_id: DOC-SUM-TWO-WEEKS-AGO-ALL
+    text_template: "先々週発生したインシデント件数は{count}件"
+    period: two_weeks_ago
+    sql_file: sql/two_weeks_ago_all.sql
+
+  - template_id: SUM-LAST-WEEK-INV-MASTER
+    doc_id: DOC-SUM-LAST-WEEK-INV-MASTER
+    text_template: "先週発生した在庫マスター設定障害のインシデント件数は{count}件"
+    period: last_week
+    sql_file: sql/last_week_inv_master.sql
+
+  - template_id: SUM-LAST-WEEK-CUST-NW
+    doc_id: DOC-SUM-LAST-WEEK-CUST-NW
+    text_template: "先週発生した顧客ネットワーク障害は{count}件"
+    period: last_week
+    sql_file: sql/last_week_cust_nw.sql

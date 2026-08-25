@@ -1,0 +1,11 @@
+{
+  "company_id": "COMP-001",
+  "incident_count_mode": "AUTO",
+  "incident_count": null,
+  "period_start": "2020-04-01",
+  "period_end": "2026-06-24",
+  "timezone": "Asia/Tokyo",
+  "random_seed": 42,
+  "locale": "ja",
+  "include_master_docs": false
+}

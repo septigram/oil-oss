@@ -1,0 +1,42 @@
+# AI チャットの定型質問（よく使う質問）
+# 文言の追加・変更・削除は本ファイルを編集してバックエンドを再起動する。
+
+version: 1
+
+templates:
+  - id: tpl-store-a-last-month
+    label: 架空食品店Aの過去1カ月
+    message: 過去1カ月の間に、架空食品店Aで発生した障害をリストアップしてください。
+
+  - id: tpl-critical-history
+    label: クリティカル障害の一覧
+    message: 過去に発生したクリティカルな障害をリストアップしてください。
+
+  - id: tpl-month-yoy
+    label: 過去1カ月の件数と昨年同月比較
+    message: 過去1カ月に発生した障害件数と、昨年同月に発生した障害件数、変化を調べてください。
+
+  - id: tpl-last-week-count
+    label: 先週のインシデント件数
+    message: 先週のインシデント件数を調べてください。
+
+  - id: tpl-failed-inventory-registration
+    label: 在庫登録の失敗
+    message: 在庫登録の失敗を検索してください。
+
+  - id: tpl-unstarted-incidents
+    label: 未着手のインシデント
+    message: 未着手のインシデントを検索してください。
+
+  - id: tpl-uncompleted-incidents
+    label: 顧客NW未完了
+    message: 顧客 NW 関連をリストしてください。
+
+  - id: tpl-incident-detail
+    label: インシデント解説
+    message: このインシデントを解説してください。
+
+  - id: tpl-incident-location-count
+    label: 発生個所別障害数
+    message: 過去2か月の発生個所別障害数をリストしてください。
+

@@ -1,0 +1,16 @@
+Ops Incident Ledger (oil)
+Copyright 2026 septigram
+
+This product includes software developed by third parties. See source dependencies in
+backend/pyproject.toml and frontend/package.json.
+
+Notable components:
+
+- Tsurugi database client (tsurugi-dbapi)
+- FAISS (faiss-cpu)
+- FastAPI, Vue, Quasar
+- LangChain / LangGraph
+- OpenTelemetry
+
+Tsurugi database server is a separate product:
+https://github.com/project-tsurugi/tsurugidb

@@ -1,0 +1,16 @@
+FROM python:3.12-slim-bookworm
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+COPY backend/pyproject.toml backend/
+COPY backend/app backend/app
+RUN pip install --no-cache-dir ./backend
+
+COPY tools/load_setup_sql.py tools/
+COPY docker/config/config.yaml config/config.yaml
+COPY data/20260624T221136/setup.sql data/20260624T221136/setup.sql
+
+CMD ["python", "tools/load_setup_sql.py"]

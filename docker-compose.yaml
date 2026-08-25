@@ -1,0 +1,60 @@
+services:
+  tsurugi:
+    image: ghcr.io/project-tsurugi/tsurugidb:1.11.0
+    ports:
+      - "12345:12345"
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/127.0.0.1/12345'"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
+
+  db-init:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.init
+    network_mode: "service:tsurugi"
+    environment:
+      OIL_TSURUGI_ENDPOINT: tcp://127.0.0.1:12345
+      OIL_TSURUGI_USER: tsurugi
+      OIL_TSURUGI_PASSWORD: password
+      OIL_BOOTSTRAP_PASSWORD: ${OIL_BOOTSTRAP_PASSWORD:-admin}
+    depends_on:
+      tsurugi:
+        condition: service_healthy
+    restart: "no"
+
+  oil:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    network_mode: "service:tsurugi"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      OIL_TSURUGI_ENDPOINT: tcp://127.0.0.1:12345
+      OIL_TSURUGI_USER: tsurugi
+      OIL_TSURUGI_PASSWORD: password
+      OIL_ENV: docker
+      OIL_SESSION_SECRET: ${OIL_SESSION_SECRET:-change-me-in-docker}
+    volumes:
+      - ./docker/config/config.yaml:/app/config/config.yaml:ro
+      - ./data/faiss:/app/data/faiss:ro
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
+      tsurugi:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/oil/health/ready')\"",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s

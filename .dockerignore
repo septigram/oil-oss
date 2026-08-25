@@ -1,0 +1,31 @@
+# Git / 仮想環境
+.git
+.wenv
+wenv/
+.venv/
+venv/
+lvenv/
+internals/
+
+# Python / Node 成果物
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+frontend/dist/
+data/faiss/
+
+# 秘密・ログ
+.env
+config/config.yaml
+operator/docker/logs/
+
+# 開発専用
+.cursor/
+docs/dev/
+docs/internals/
+docs/presentation/
+out/
+
+# OSS 公開フィルタ対象（イメージに不要）
+oss-templates/

@@ -1,0 +1,2 @@
+-- RFC003 増分マイグレーション: 対応手順書テーブル追加
+-- Tsurugi は CREATE TABLE IF NOT EXISTS / BOOLEAN 非対応。apply ツールで CREATE TABLE を実行。
